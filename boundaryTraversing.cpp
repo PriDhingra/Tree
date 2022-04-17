@@ -48,15 +48,19 @@ void leftBoundary(Node* temp, vector<int> &result) {
 }
 
 void leafNodes(Node* temp, vector<int> & result) {
+
+    if(temp == NULL)
+        return;
+
     if(temp -> left == NULL && temp -> right == NULL) {
         result.push_back(temp -> data);
         return;
     }
 
-    if(temp -> left != NULL)
+    if(temp -> left)
         leafNodes(temp -> left, result);
     
-    if(temp -> right != NULL)
+    if(temp -> right)
         leafNodes(temp -> right, result);
 }
 
@@ -75,6 +79,8 @@ void rightBoundary(Node* temp, vector<int> &result) {
 
 vector<int> boundaryTraversal(Node* temp) {
     vector<int> result;
+    if(temp == NULL)
+        return result;
 
     result.push_back(temp -> data);
     leftBoundary(temp -> left, result);
